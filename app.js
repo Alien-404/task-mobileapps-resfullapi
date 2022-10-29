@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 
 // init express
@@ -11,6 +12,7 @@ const BASE_URL = `http://localhost:${process.env.PORT}`;
 const mahasiswaRoutes = require('./routes/mahasiswa');
 
 // middleware
+app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
