@@ -7,9 +7,7 @@ const prisma = new PrismaClient();
 // GET ALL
 const getMahasiswas = async (req, res) => {
   const mahasiswas = await prisma.mahasiswa.findMany();
-  res.status(200).json({
-    data: mahasiswas,
-  });
+  res.status(200).json(mahasiswas);
 };
 
 // GET SINGLE
@@ -29,14 +27,12 @@ const getMahasiswa = async (req, res) => {
     });
   }
 
-  res.status(200).json({
-    data: mahasiswa,
-  });
+  res.status(200).json(mahasiswa);
 };
 
 // POST DATA
 const postMahasiswa = async (req, res) => {
-  const { name, age } = req.body;
+  const { name, age = 20 } = req.body;
 
   // check
   if (!name && !age) {
@@ -52,10 +48,7 @@ const postMahasiswa = async (req, res) => {
     },
   });
 
-  res.status(200).json({
-    message: 'mahasiswa successfully added',
-    data: newMahasiswa,
-  });
+  res.status(200).json(newMahasiswa);
 };
 
 // UPDATE DATA
@@ -84,10 +77,7 @@ const upMahasiswa = async (req, res) => {
     },
   });
 
-  res.status(200).json({
-    message: 'mahasiswa successfully updated',
-    data: updateMahasiswa,
-  });
+  res.status(200).json(updateMahasiswa);
 };
 
 // DELETE DATA
@@ -113,10 +103,7 @@ const delMahasiswa = async (req, res) => {
     },
   });
 
-  res.status(200).json({
-    message: 'mahasiswa successfully deleted',
-    data: deleteMahasiswa,
-  });
+  res.status(200).json(deleteMahasiswa);
 };
 
 // export

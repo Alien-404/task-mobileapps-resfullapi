@@ -23,6 +23,10 @@ app.use((req, res, next) => {
 app.use('/mahasiswa', mahasiswaRoutes);
 
 // listen app
-app.listen(process.env.PORT, (req, res) => {
-  console.log(`Server running ${BASE_URL}`);
-});
+app.listen(
+  process.env.PORT,
+  process.env.HOSTNAME || 'localhost',
+  (req, res) => {
+    console.log(`Server running ${BASE_URL}`);
+  }
+);
